@@ -78,7 +78,9 @@ public class GUI implements Runnable {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new GUI());
+       // SwingUtilities.invokeLater(new GUI());
+        GUI gui = new GUI();
+        gui.run();
     }
 
     public class TimerThread extends Thread {

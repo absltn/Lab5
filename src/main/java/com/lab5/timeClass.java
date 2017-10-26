@@ -20,6 +20,6 @@ public class timeClass {
         ZoneId zoneId = ZoneId.of(Zone);
         ZonedDateTime dateAndTime = ZonedDateTime.ofInstant(now, zoneId);
 
-        return DateTimeFormatter.ofPattern("hh:mm:ss Z").format(dateAndTime);
+        return DateTimeFormatter.ofPattern("HH:mm:ss Z").format(dateAndTime);
     };
 }
