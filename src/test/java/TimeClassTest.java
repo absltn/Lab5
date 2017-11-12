@@ -1,11 +1,11 @@
-import com.lab5.timeClass;
+import com.lab5.TimeClass;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class timeClassTest {
+public class TimeClassTest {
     @Test
-    public void testTimeClass(){
-        timeClass testTime = new timeClass("Europe/Moscow");
+    public void TimeClassTest(){
+        TimeClass testTime = new TimeClass("Europe/Moscow");
         Assert.assertEquals("Europe/Moscow", testTime.getZone());
         Assert.assertTrue(testTime.getZone() instanceof String);
     }

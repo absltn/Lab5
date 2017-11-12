@@ -13,16 +13,12 @@ import javax.swing.SwingUtilities;
  * It uses {@link JFrame}, {@link JPanel} and {@link JLabel} classes
  * For time to update i implement {@link Runnable} interface.
  * While running i implement {@link Thread} for updating time.
- * Time itself is formatted String, that comes from {@link timeClass} which
+ * Time itself is formatted String, that comes from {@link TimeClass} which
  * provides ZonedDateTime instant, invoked with ZoneId. ZoneId is set from
  * GUI class with run() method.
  */
 public class GUI implements Runnable {
-
-    public TimerThread timerThread;
-
-    @Override
-    public void run() {
+    public GUI(){
         JFrame frame = new JFrame();
         frame.setBounds(100, 200, 145, 200);
         frame.setTitle("World clock");
@@ -67,9 +63,16 @@ public class GUI implements Runnable {
         });
 
         timerThread = new TimerThread(timeLabel1, timeLabel2, timeLabel3);
+        frame.setVisible(true);
+    }
+    public TimerThread timerThread;
+
+    @Override
+    public void run() {
+
         timerThread.start();
 
-        frame.setVisible(true);
+
     }
 
     public void exitProcedure() {
@@ -83,7 +86,7 @@ public class GUI implements Runnable {
         gui.run();
     }
 
-    public class TimerThread extends Thread {
+    public static class TimerThread extends Thread {
 
         protected boolean isRunning;
 
@@ -104,9 +107,9 @@ public class GUI implements Runnable {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        timeClass moscow = new timeClass("Europe/Moscow");
-                        timeClass london = new timeClass("Europe/London");
-                        timeClass NY = new timeClass("America/New_York");
+                        TimeClass moscow = new TimeClass("Europe/Moscow");
+                        TimeClass london = new TimeClass("Europe/London");
+                        TimeClass NY = new TimeClass("America/New_York");
                         timelabel_moscow.setText(moscow.getTime());
                         timelabel_london.setText(london.getTime());
                         timelabel_NY.setText(NY.getTime());
